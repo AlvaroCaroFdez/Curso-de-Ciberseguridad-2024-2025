@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-10T00:26:12+01:00",
+  "id": "Actividad05",
+  "duration": 0,
+  "title": "Actividad 05",
+  "summary": "Realizar la adquisición forense de una memoria USB empleando las siguientes herramientas: FTK Imager, GuyImager y dd",
+  "source": "codelab.md",
+  "theme": "",
+  "status": [
+    "publicado"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "Actividad05"
+}

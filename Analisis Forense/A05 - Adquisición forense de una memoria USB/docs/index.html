@@ -1,0 +1,70 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Actividad 05</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="Actividad05"
+                  title="Actividad 05"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introducción" duration="0">
+        <p>La adquisición forense de una memoria USB es un proceso crítico en la informática forense, diseñado para recopilar y preservar evidencias digitales de manera integra y auténtica. Este proceso implica crear una copia exacta del contenido de la memoria USB, incluyendo datos eliminados y espacios de memoria libres, sin modificar el dispositivo original. La integridad de la evidencia es fundamental, por lo que es esencial evitar cualquier modificación accidental durante el proceso.</p>
+<p>Para realizar esta tarea, se utilizan herramientas especializadas como FTK Imager, GuyImager y ‘dd&#39;. FTK Imager, desarrollado por AccessData, es una herramienta poderosa que permite seleccionar el dispositivo a imagenar y elegir el formato de la imagen, como E01. GuyImager, por otro lado, es una herramienta de código abierto que ofrece opciones para la compresión y fragmentación de la imagen. dd, una herramienta de línea de comandos en sistemas Unix-like, es muy versátil y se utiliza comúnmente para crear imágenes raw de dispositivos.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="FTK Imager" duration="0">
+        <p>FTK Imager es una herramienta forense digital desarrollada por AccessData, utilizada para adquirir, examinar y analizar datos de dispositivos de almacenamiento digital. Permite crear imágenes forenses de dispositivos como discos duros, unidades USB y tarjetas de memoria, realizando una copia bit a bit del contenido para preservar la integridad de los datos originales. También facilita la verificación de la integridad de la imagen, la búsqueda de palabras clave y la extracción de archivos específicos. Es una herramienta esencial en la informática forense para obtener evidencia digital válida en investigaciones y procesos legales</p>
+<p><img alt="FTK-1" src="img\\1bab4c806296bda.png"> Resultados de la adquisición mediante el uso de FTK Imager</p>
+<p><img alt="FTK-2" src="img\\690077f4b2c89e07.png"><img alt="FTK-3" src="img\\8541183c190f93bb.png"> Resumen de la información de la adquisición</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="GuyImager" duration="0">
+        <p>Guymager es una herramienta forense que crea imágenes de dispositivos de almacenamiento digital, como discos duros y unidades USB. Ofrece una interfaz gráfica intuitiva y soporta varios formatos de imagen, incluyendo EWF y AFF. Permite la generación de hashes para verificar la integridad de los datos y mantiene registros detallados del proceso de imagenación. Es ideal para investigaciones forenses debido a su eficiencia y flexibilidad.</p>
+<p><img alt="GuyImager-1" src="img\\be7cc5899c48011e.png"> Imagen del inicio del proceso de adquisición con la herramienta GuyImager</p>
+<p><img alt="GuyImager-1" src="img\\c0e44ec22b21fbf4.png"> Resultado final de la adquisición con la herramienta GuyImager</p>
+<p>Esta herramienta genera un fichero .info donde se encuentran los hash generados.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="DD" duration="0">
+        <p>El comando ‘dd&#39; (Data Duplicator o Dataset Definition) es una herramienta de línea de comandos en sistemas Unix-like, utilizada para crear copias bit a bit de dispositivos de almacenamiento. Es ampliamente usada en la informática forense para adquirir imágenes de discos duros, unidades USB y otros dispositivos, preservando la integridad de los datos. Ofrece flexibilidad y control detallado sobre el proceso de copia, incluyendo la capacidad de calcular hashes para verificar la integridad de la imagen. Es una herramienta esencial para investigaciones forenses debido a su precisión y eficiencia.</p>
+<p><img alt="DD-1" src="img\\2d70ce5d8fc88f7d.png"> Captura de los 3 comandos utilizados para obtener la imagen del USB, y luego los diferentes hash, que se muestran por línea de comandos</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
