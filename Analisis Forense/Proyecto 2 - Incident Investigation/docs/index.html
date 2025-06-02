@@ -1,0 +1,834 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Proyecto 2: Incident Investigation</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="Proyecto 2.1"
+                  title="Proyecto 2: Incident Investigation"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introducción" duration="0">
+        <p>En este proyecto, como miembros del equipo de respuesta a incidentes (CSIRT) de la empresa, se nos ha asignaod la investigación de un incidente de seguridad que ha comprometido una de las máquinas del departamento de IT. La tarea consistirá en aplicar la metodología de análisis forense para recopilar, almacenar y analizar evidencias de forma que se conserve su integridad y se mantenga una trazabilidad completa del proceso. La finalidad es proporcionar un informe técnico detallado sobre las conclusiones del análisis, que sirva tanto para la resolución del incidente como para la mejora continua de las medidas de seguridad de la organización.</p>
+<p>Cada evidencia estará dividida en diferentes partes:</p>
+<ul>
+<li>Descripción herramienta utilizada.</li>
+<li>Captura de la evidencia.</li>
+<li>Acta de adquisición forense.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Triaje" duration="0">
+        <h2 is-upgraded>Descripción herramienta utilizada</h2>
+<p><strong>WinAuditor</strong> es una herramienta de auditoría diseñada para analizar y evaluar la seguridad y configuración de sistemas Windows. Proporciona un análisis exhaustivo de los aspectos críticos de los equipos, incluyendo el software instalado, la configuración de red, las políticas de seguridad, los permisos de usuario y los servicios en ejecución. Su objetivo es ayudar a administradores de sistemas y profesionales de seguridad a identificar vulnerabilidades, configuraciones inadecuadas y posibles problemas de rendimiento que puedan comprometer la seguridad de una red.</p>
+<p>He decidido usar WinAuditor para realizar el triaje en esta adquisición porque me proporciona un análisis completo y rápido del estado de seguridad y configuración de la máquina, lo cual es crucial en la fase inicial de una investigación forense.</p>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>La herramienta utilizada nos genera un archivo .html. El archivo generado se muestra como en la siguiente captura:</p>
+<p class="image-container"><img alt="triaje-1" src="img\\c7fe336c6eb396dd.png"></p>
+<p>Aquí adjunto el enlace al .html completo, donde se encuentran todos los datos del triaje, como la dirección IP y MAC asociadas, Kernel, procesos, ficheros LOGS:</p>
+<p><a href="https://drive.google.com/file/d/1CSjlRRftBKXiW_6bxatyTF9ngxTMeUE7/view?usp=drive_link" target="_blank">Enlace a documento de triaje</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:22</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>WinAuditor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Triaje máquina</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>FORENSE-06.html</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>574 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>598632472c70dae7bcba2bdf994dc243</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>b7740b3375178a4787985bb86a8ba13baf2ac870</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:37</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Tabla de enrutamiento" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>La tabla de enrutamiento es una estructura clave en redes que guía cómo y hacia dónde deben dirigirse los paquetes de datos. Es una lista organizada que contiene rutas de red específicas, cada una con información sobre destinos de red y las rutas para alcanzarlos. Esta tabla es utilizada por dispositivos como routers y sistemas operativos para decidir el mejor camino que un paquete de datos debe seguir desde su origen hasta su destino final en la red.</p>
+<p>Para obtener detalles de la tabla de enrutamiento usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">route print
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El comando nos genera lo siguiente:</p>
+<p class="image-container"><img alt="routeprint-1" src="img\\7db65805e7ba423c.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1NtS4rU002crAAefDoJwkhFxgkmgiM8Fi/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:37</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>route print</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener información tabla de enrutamiento</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>routeprint.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>3 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>78c3648c94e7c07b8db3baee237de21c</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>d9ff7f3d8f71716382f664916ecaceace588a3b5</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:38</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Tabla de caché ARP" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>La caché ARP (Address Resolution Protocol) es una tabla que almacena temporalmente las asociaciones entre las direcciones IP y las direcciones MAC en una red local. Este almacenamiento permite a los dispositivos en una red localizar rápidamente otros dispositivos dentro de la misma subred, lo que agiliza la comunicación.</p>
+<p>Para obtener detalles de la tabla de cache ARP usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">arp -a
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El comando nos genera lo siguiente:</p>
+<p class="image-container"><img alt="arp-1" src="img\\36b35b51826cc0cf.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1clPpD4wp_c6mVveCODcFW-bZfBOE80C2/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:38</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>arp -a</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener información tabla de caché</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>cache-arp.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>1 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>0fbd85d9c80a0d59b0a5116e9ff9ebb0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>99cf2171ce8e564527f3bd6b6c0862a1cab4ca95</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:39</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Procesos" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>El comando tasklist en Windows permite ver una lista de todos los procesos en ejecución en el sistema, proporcionando información básica sobre cada uno. Es similar al administrador de tareas, pero en formato de línea de comandos, lo que lo hace útil para automatización y gestión de procesos en sistemas remotos o sin interfaz gráfica.</p>
+<p>Para obtener detalles de la tabla que genera, usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">tasklist
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El comando nos genera lo siguiente:</p>
+<p class="image-container"><img alt="procesos-1" src="img\\29bd895d90a3cf12.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/198paUGDh2FVhgG77flJrCqp5TLQvQxNA/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:39</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>tasklist</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener información procesos en el sistema</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>procesos.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>4 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>1624e797148807ac723ebb8389773fde</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>66d21cd60ef48b9efa87354e56bc69709690e0df</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:40</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Kernel" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>El kernel es el núcleo del sistema operativo que gestiona la comunicación entre el hardware y el software. En Windows, el kernel actúa como el componente principal que coordina los recursos del sistema (procesador, memoria, dispositivos de entrada/salida, etc.) y facilita la ejecución de procesos y la comunicación entre ellos.</p>
+<p>Para obtener detalles de la versión del kernel, usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">ver
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El comando nos genera lo siguiente:</p>
+<p class="image-container"><img alt="version-1" src="img\\6fe5d3160e53e660.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1zUSrnf8QyQv-nsBmaCob9nC0HzN7FTXm/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:40</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>ver</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener versión del kernel del sistema</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>ver.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>1 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>082f2e97e670228e3b323c6a3a874f40</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>e50760edb5e88385449a44818f5726e5beed7aab</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:41</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Systeminfo" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>Este comando muestra un informe detallado sobre la configuración del sistema, proporcionando información clave sobre el hardware, el sistema operativo, y la red. Es útil para obtener rápidamente una visión completa del sistema, especialmente en tareas de administración y diagnóstico de problemas</p>
+<p>Para obtener los detalles del sistema, usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">systeminfo
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El comando nos genera lo siguiente:</p>
+<p class="image-container"><img alt="infosistema-1" src="img\\20017eccad98f201.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1C0V00SfzoAQaPbfDUZQQ2bD_FcFATX7h/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:41</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>systeminfo</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener información del sistema</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>systeminfo.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>3 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>b9e61359ba30bdf4649e27e30c52d7cd</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>6d68f4f2a7b97497314b1c602b210dc2da153184</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>10:42</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Logs del sistema" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>wevtutil es una herramienta de línea de comandos en Windows diseñada para gestionar los logs de eventos del sistema. Permite ver, consultar, exportar, y borrar eventos en los registros de Windows, así como administrar la configuración de los mismos.</p>
+<p>Para obtener los detalles del sistema, usaré el comando:</p>
+<pre><code language="language-bash" class="language-bash">wevtutil qe System /c:10 /f:text
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El siguiente comando muestra los últimos 10 eventos del log del sistema:</p>
+<p class="image-container"><img alt="logs-1" src="img\\b8eaef01dcaa1193.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1NfneuBLhCO-UmkP99OomUgIv4QozjAUd/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>12:48</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>wevtutil</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener logs del sistema</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>wevtutil.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>4 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>81582a92c43aaa363b3ebdc88ebc92d2</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>fa2902fae7a6558d83e847ac2eea06f53d669e46</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>14:24</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Topología de red" duration="0">
+        <h2 is-upgraded>Descripción</h2>
+<p>El comando ipconfig /all en Windows proporciona una visión completa de la configuración de red de todas las interfaces (tanto físicas como virtuales) de la máquina. Es útil para obtener información detallada sobre la configuración de IP, DNS, DHCP, dirección MAC, y más, de cada adaptador de red, lo cual es esencial para diagnosticar problemas de conectividad y analizar la estructura de la red.</p>
+<p>Para obtener los detalles de la tipología, usaré el comando mencionado:</p>
+<pre><code language="language-bash" class="language-bash">ipconfig /all
+</code></pre>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>El siguiente comando muestra los últimos 10 eventos del log del sistema:</p>
+<p class="image-container"><img alt="topologia-1" src="img\\acf4f939c30da33.png"></p>
+<p>Para adquirir el hash se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1P5v29iy7Sm5KRRQ9_4UkdUX3llqzrotT/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>14:26</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>ipconfig</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Obtener información de la topología de red del sistema</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>ipconfig.txt</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>3 KB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>30be1cfcb763e00ec20b13a77bead819</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>bcc7953727f8609855664df01673cc67d8a4c8dd</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>14:27</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Disco duro" duration="0">
+        <h2 is-upgraded>Descripción herramienta utilizada</h2>
+<p><strong>FTK Imager</strong> es una herramienta forense utilizada para la adquisición y preservación de evidencia digital en investigaciones de ciberseguridad. Permite crear imágenes exactas bit a bit de discos duros, unidades de almacenamiento y otros dispositivos, asegurando que los datos no se alteren durante el proceso de captura. FTK Imager soporta varios formatos de imagen forense estándar, como E01 y AFF, y ofrece opciones para ver el contenido de un dispositivo sin necesidad de crear una imagen completa de inmediato. Es ampliamente utilizada en investigaciones forenses debido a su fiabilidad y capacidad para mantener la integridad de la evidencia.</p>
+<p>He decidido usar FTK Imager para la adquisición del disco en esta investigación forense porque es una herramienta confiable y ampliamente utilizada en el campo de la ciberseguridad para crear imágenes forenses de discos duros. Como he mencionado anteriormente, permite crear imágenes bit a bit.</p>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>La herramienta utilizada nos genera una serie de archivos, uno de ellos en formato E01, que sería la imagen del disco, y un fichero .txt, con toda la información. Una vez se ha realizado la adquisición nos muestra un mensaje como el siguiente:</p>
+<p class="image-container"><img alt="adquisiciondisco-1" src="img\\d6c2b5bf832575c0.png"></p>
+<p>Aquí adjunto un enlace al documento de texto:</p>
+<p><a href="https://drive.google.com/file/d/1SMXNL6gENe0KiHqHwjHQavzbVz-wZMfL/view?usp=drive_link" target="_blank">Enlace a documento de texto de la adquisición</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>10:42</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Disco duro máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>FTK Imager</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Adquisición imagen disco duro</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>adquisicion-disco-duro.E01 adquisicion-disco-duro.E02 adquisicion-disco-duro.E03 adquisicion-disco-duro.E04</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>1.535 MB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>f4974335070bd9bb776687f6c128dbcc</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>518b44435dc6569336992f1fc5dd4438ef932d24</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>11:16</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Memoria RAM" duration="0">
+        <h2 is-upgraded>Descripción herramienta utilizada</h2>
+<p><strong>RamCapturer</strong> es una herramienta para la captura de la memoria RAM en sistemas Windows. Su función principal es realizar un volcado de memoria, lo que te permite capturar toda la memoria volátil (RAM) de la máquina y analizarla posteriormente. Al hacer esto, puedes extraer y analizar datos como registros de sistema, procesos en ejecución, caché de red, contraseñas en texto claro, entre otros elementos que se encuentren en la memoria.</p>
+<h2 is-upgraded>Captura de la evidencia</h2>
+<p>La herramienta utilizada genera un archivo, en formato .mem. Este archivo contiene una copia exacta de la memoria RAM en el momento en que se realizó la captura. Una vez se ha realizado la adquisición nos muestra un mensaje como el siguiente:</p>
+<p class="image-container"><img alt="memoriaram-1" src="img\\9455628cf0669bb7.png"></p>
+<p>Para adquirir los hashs se utiliza la aplicación HashMyFiles. Aquí adjunto un enlace al documento .mem:</p>
+<p><a href="https://drive.google.com/file/d/1PtL_8Kc-jqdDfubbxKT6qI4jD8lDN3z1/view?usp=drive_link" target="_blank">Enlace a fichero .mem</a></p>
+<h2 is-upgraded>Acta de adquisición forense</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Número de caso</p>
+</td><td colspan="1" rowspan="1"><p>01</p>
+</td><td colspan="1" rowspan="1"><p>Fecha</p>
+</td><td colspan="1" rowspan="1"><p>13/11/2024</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Hora de inicio</strong></p>
+</td><td colspan="1" rowspan="1"><p>11:46</p>
+</td><td colspan="1" rowspan="1"><p><strong>Lugar</strong></p>
+</td><td colspan="1" rowspan="1"><p>Departamento IT</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Investigador responsable</strong></p>
+</td><td colspan="3" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+</table>
+<p><strong>1.- Identificación del dispositivo</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Tipo de dispositivo</p>
+</td><td colspan="1" rowspan="1"><p>Memoria RAM máquina comprometida departamento IT</p>
+</td></tr>
+</table>
+<p><strong>2.- Método de adquisición</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Herramienta utilizada</p>
+</td><td colspan="1" rowspan="1"><p>Ram Capturer</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tipo de adquisición</strong></p>
+</td><td colspan="1" rowspan="1"><p>Adquisición memoria RAM</p>
+</td></tr>
+</table>
+<p><strong>3.- Detalles de la evidencia adquirida</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Nombre del archivo</p>
+</td><td colspan="1" rowspan="1"><p>20241113.mem</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño del archivo</strong></p>
+</td><td colspan="1" rowspan="1"><p>1.048 MB</p>
+</td></tr>
+</table>
+<p><strong>4.- Hash de la evidencia</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Algoritmo</p>
+</td><td colspan="1" rowspan="1"><p>MD5</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>f24503b8d726060f67d9c8c40558404e</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Algoritmo</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>SHA-1</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Valor</strong></p>
+</td><td colspan="1" rowspan="1"><p>0e149678de8cb099b95de50e1eeeec3f6bf299d2</p>
+</td></tr>
+</table>
+<p><strong>5.- Observaciones</strong></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Hora de finalización</p>
+</td><td colspan="1" rowspan="1"><p>11:56</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Nombre del perito</p>
+</td><td colspan="1" rowspan="1"><p>Álvaro Caro Fernández</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
