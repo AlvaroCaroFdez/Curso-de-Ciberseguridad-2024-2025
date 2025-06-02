@@ -1,0 +1,913 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>A2.2-DrugTrafficking</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="docs"
+                  title="A2.2-DrugTrafficking"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Entorno de trabajo" duration="0">
+        <p>Para la realización de esta actividad se van a utilizar las siguientes herramientas:</p>
+<ul>
+<li><strong>Máquina propia:</strong>En este caso usaré mi propia máquina, un portátil HP Laptop 15-dw0xxx, donde hay una máquina virtual instalada con un sistema operativo Windows 10, dónde se usarán las herramientas descritas a continuación para poder completar la actividad.</li>
+<li><strong>Autopsy:</strong>Es una herramienta de análisis forense digital diseñada para examinar dispositivos de almacenamiento, como discos duros y memorias USB, o imágenes de discos. Su propósito principal es ayudar a recuperar archivos eliminados, analizar datos almacenados, y detectar rastros de actividad del usuario que puedan servir como evidencia en investigaciones. Ofrece funciones avanzadas, como análisis de sistemas de archivos, revisión de historiales de navegación, análisis de correos electrónicos, y recuperación de imágenes y videos. Gracias a esta herramienta podremos extraer los diferentes archivos que posteriormente examinaremos con Windows Registry Recovery</li>
+<li><strong>Windows Registry Recovery:</strong>Esta herramienta se centra en el análisis y recuperación del Registro de Windows, que es una base de datos crítica donde el sistema operativo almacena configuraciones relacionadas con hardware, software, usuarios y redes. Esta herramienta permite extraer información clave, como programas instalados, configuraciones de red, dispositivos previamente conectados y rastros de actividad de los usuarios. Es especialmente útil en situaciones donde el Registro está dañado o se necesita realizar un análisis forense, ya que puede revelar pistas sobre cambios recientes en el sistema, actividad sospechosa o configuraciones que puedan ser relevantes para una investigación. Mediante esta aplicación será desde donde sacaremos toda la información de los diferentes archivos.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Información del sistema" duration="0">
+        <table>
+<tr><td colspan="2" rowspan="1"><p>Información del sistema</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño de la partición (Byte)</strong></p>
+</td><td colspan="1" rowspan="1"><p>2623832064</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Prueba</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="Foto1" src="img\\e234a195bb053421.png"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Sistema y versión del SO</strong></p>
+</td><td colspan="1" rowspan="1"><p>Microsoft Windows XP</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombres de usuarios registrados</strong></p>
+</td><td colspan="1" rowspan="1"><p>John</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Organización registrada</strong></p>
+</td><td colspan="1" rowspan="1"><p>home</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>&#34;Product ID&#34; asociado al sistema</strong></p>
+</td><td colspan="1" rowspan="1"><p>76487-341-1072684-22504</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>&#34;Service Pack&#34; instalado</strong></p>
+</td><td colspan="1" rowspan="1"><p>Service Pack 3</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha y hora de instalación del sistema operativo</strong></p>
+</td><td colspan="1" rowspan="1"><p>18 de abril de 2013 a las 15:17:02 (UTC)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha y hora del último &#34;shutdown&#34;</strong></p>
+</td><td colspan="1" rowspan="1"><p>19/06/2013 2:11:46</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Pruebas</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="Foto2" src="img\\256c80de8822bba1.png"> <img alt="Foto3" src="img\\2e146c8af615f27a.png"></p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Información de usuarios" duration="0">
+        <p>Estos son los usuarios definidos en el sistema:</p>
+<p class="image-container"><img alt="usuarios" src="img\\264edee0be2b9e8a.png"></p>
+<p>Quitando los usuarios ya definidos por defecto en el sistema, se encuentran los siguientes usuarios creados:</p>
+<table>
+<tr><td colspan="2" rowspan="1"><p>John</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último &#34;logon&#34;</strong></p>
+</td><td colspan="1" rowspan="1"><p>28/03/2013 - 3:10:49</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último cambio de contraseña</strong></p>
+</td><td colspan="1" rowspan="1"><p>18/04/2013 - 15:18:44</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Prueba</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="john" src="img\\ba553bae237b176f.png"></p>
+</td></tr>
+</table>
+<table>
+<tr><td colspan="2" rowspan="1"><p>Ian</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último &#34;logon&#34;</strong></p>
+</td><td colspan="1" rowspan="1"><p>25/04/2013 - 2:06:52</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último cambio de contraseña</strong></p>
+</td><td colspan="1" rowspan="1"><p>18/04/2013 - 15:18:44</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Prueba</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="ian" src="img\\34a9a0fbad116e6d.png"></p>
+</td></tr>
+</table>
+<table>
+<tr><td colspan="2" rowspan="1"><p>Jessy</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último &#34;logon&#34;</strong></p>
+</td><td colspan="1" rowspan="1"><p>23/04/2013 - 2:18:56</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Fecha último cambio de contraseña</strong></p>
+</td><td colspan="1" rowspan="1"><p>18/04/2013 - 15:18:44</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Prueba</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="jessy" src="img\\ea872cc83b226571.png"></p>
+</td></tr>
+</table>
+<p>Sí, existe una contradicción entre las fechas halladas en este apartado y el anterior.</p>
+<p>El último inicio de sesión de John aparece como <strong>28/03/2013 a las 03:10:49</strong>, mientras que la fecha de instalación del sistema es <strong>18 de abril de 2013 a las 15:17:02 (UTC)</strong>. Esto implica que el usuario aparentemente inició sesión en un sistema que, según el registro, aún no había sido instalado. Esto se puede deber a diferentes motivos:</p>
+<ul>
+<li><strong>Restauración desde una copia de seguridad:</strong> El sistema pudo haber sido reinstalado o restaurado desde una imagen anterior, lo que preservaría los registros de inicio de sesión con fechas anteriores a la instalación.</li>
+<li><strong>Manipulación intencionada:</strong> No se puede descartar que alguien haya alterado las fechas para encubrir actividades o generar confusión.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Extracción de archivos" duration="0">
+        <h2 is-upgraded><strong>Archivos eliminados:</strong></h2>
+<h2 is-upgraded><strong>Almacen mataro 2.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen mataro 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mataro2" src="img\\2897f91138746f4d.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:39:14 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>9935 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen mataro 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>ba0268ffe1d3a340a595cfd9a8cd6b87</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>9dd2e70416e70e5099303f04e5d48ad72d27155cf3e8dd5bc50dcfb93ebc056d</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Almacen mataro 3.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen mataro 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mataro3" src="img\\ce3b23f528393d9c.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:39:26 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>14399 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen mataro 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>07e03d5971f5b5a6433a13565cac407d</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>9e75a74404967693442b99278fcce969ddc4f7046903e3fc449b537960e93394</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Almacen mataro.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen mataro.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mataro" src="img\\bc0f9aead2764e51.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:39:04 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>6998 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen mataro.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>c7c5a5521ed005ddad94cb9a9b254d6b</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>5cec8378687c3255665e4123cb30b6e05b2117a8ee9e65fe9a4b986e0cc0fe84</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Almacen terrassa 3.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen terrassa 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="terrasa3" src="img\\d733b33e3ec0b837.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:39:42 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>6943 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen terrassa 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>1e6f15394d075ba43308da22ba92059c</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>805967a139624368bb0c0dd494a0b4c751a649e022b7a32f957d6f592784a29a</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Almacen terrassa 4.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen terrassa 4.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="terrasa4" src="img\\65145b9b7e6c1c57.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:40:28 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>7349 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen terrassa 4.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>c641391cfe11009563aaf6d5ff7caf1b</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>c8ab21e06cdcf9524c68f6ab6e2df645a19ebe86fc253a85c052c0d5696910cb</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Almacen terrassa.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Almacen terrassa.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="terrasa" src="img\\bdc465b83c742b64.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:20:50 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>9637 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Almacen terrassa.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>e9bc32019fe6c4bffb1ec9bef18b85aa</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>bd9a18a33b5cec923b6a19d7ddcfb27c580377211761eb602c209d5fb8dfa9bd</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>coca.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>coca.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="coca" src="img\\85311e5c114e5f8e.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:19:58 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>5777 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/coca.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>1ffb5afbe2990760fd1b504386593f95</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>061c9e9cef4e2f62ddf8ab1e25e7f665037890119f958d385868d752832148c0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>fabricando coca 2.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>fabricando coca 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="fabricando-coca2" src="img\\3eb22b9acfcb5102.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:42:34 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>14373 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/fabricando coca 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>5131b40b7b745677b6a6b06e3580508c</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>12ac6ae66c460ba004e1389991f429495246d743080c2c00c05c326b4da8368c</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>fabricando coca 3.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>fabricando coca 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="fabricando-coca3" src="img\\6fa44275f1813b9c.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:43:20 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>9994 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/fabricando coca 3.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>99631163aabedd753f9a5d00b6fe74ac</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>800242322a228a4db8567b0de03f33f259ebd46e6601b51a2b8e4907f7c87853</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>fabricando coca 4.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>fabricando coca 4.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="fabricando-coca4" src="img\\66874fd886862cbf.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:43:30 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>12608 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/fabricando coca 4.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>ffbedbaa75fff0a2f405489082667c65</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>7c6dffced23041315aa7fb9e3ac90e2f3934e1430d819eebb135ee9d634c3b63</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>fabricando coca.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>fabricando coca.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="fabricando-coca" src="img\\9bb61b21175fb567.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:42:28 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>6413 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/fabricando coca.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>66a8a952396995a7800ac63e8e2234bd</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>7352059b3e7a29143d0c38dcb8610cbc79251049d41cc8a58662a8101dd2cdf3</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>fiesta Jorge.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>fiesta Jorge.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="fiesta-jorge" src="img\\dac4346095ab94e4.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:20:20 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>8905 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/fiesta Jorge.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>c6661d1558b767f31c1f65242af95118</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>bd87c563633f99998dc3956239afcf2b3ea8d19dd8f65e6f483c1bc8ca27166e</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>kasius 2.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>kasius 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="kasius-2" src="img\\7a65def15268d3f2.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:42:04 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>5716 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/kasius 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>28f5966b1a4a72cb3b434f688bf8dd0b</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>1ed78fad0270ba13b15f1222d973cab3f2de072f5d72902af7bc48bd1ac35db1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>kasius.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>kasius.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="kasius" src="img\\97cd7003fa32a7ab.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:41:58 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>9175 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/kasius.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>d56befec0c93acbad7fe9d48f5415a2b</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>28bb98cf7e09a6d96f8bcb4ee5d683740a4a334790f946354df061f175ba20c0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Maria en negocio Jorge.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Maria en negocio Jorge.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="maria" src="img\\a0c1de4017193556.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:38:30 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>5083 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Maria en negocio Jorge.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>18f5a99105c58f8a71a3405562d2eafa</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>b2412594f86335be25a83db0ee9ecaf576f9182a322fe69581ece2ccd4d6911f</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>mercancia 2.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>mercancia 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mercancia-2" src="img\\2add1cc812904295.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:21:06 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>8620 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/mercancia 2.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>5b5a015f4041bbed1bca11fc7be74fcc</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>25543a3af9f7a0e72fed485116c24a4a45f9705aba49470b1cd891bf8ec8ea0e</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Mercancia terrassa.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>Mercancia terrassa.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mercancia-terrassa" src="img\\7bf143c8742fec21.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:38:52 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>8968 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/Mercancia terrassa.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>957894f16f61655cec7110625c7e344b</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>bbc8f083cb8bd891463aa62d477620fe884f653e6725ad833f13b312b9f43490</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>mercancia.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>mercancia.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="mercancia" src="img\\86ebaa43728ce8a0.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:20:08 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>6917 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/mercancia.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>c1481b245fe4f3b5362cd5e19ffaffba</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>32700fcb07ed7a1c760911c5aa43a24a06afbb42c119fa54197330dc57978546</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>pastillas.jpg</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Campo</p>
+</td><td colspan="1" rowspan="1"><p>Valor</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Nombre</strong></p>
+</td><td colspan="1" rowspan="1"><p>pastillas.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Imagen</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img alt="pastillas" src="img\\bf25072b301c6e47.jpg"></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Modified Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-03-27 06:19:22 CET</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Change Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Access Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Created Time</strong></p>
+</td><td colspan="1" rowspan="1"><p>2013-06-19 04:11:24 CEST</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Tamaño</strong></p>
+</td><td colspan="1" rowspan="1"><p>12942 bytes</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Location</strong></p>
+</td><td colspan="1" rowspan="1"><p>/img_AFI_W.E01/$OrphanFiles/pastillas.jpg</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>MD5 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>6fe69a3ad25893e824b7c40e252f96a8</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SHA-256 Hash</strong></p>
+</td><td colspan="1" rowspan="1"><p>9d51fd7fabfa93a72fcc7b947cc88d12536834756597b7dcf8b155eaf6f5d7c0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Extension</strong></p>
+</td><td colspan="1" rowspan="1"><p>jpg</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Ficheros encriptados y comprimidos" duration="0">
+        <p>Se han encontrado una serie de archivos comprimidos uno de ellos en formato &#34;.zip&#34; y el otro fichero en formato &#34;.xls&#34;. Estos ficheros están encriptados presuponiendo que incluyen información delicada. Los archivos tienen los siguientes nombres:</p>
+<ul>
+<li>pedofilia.zip</li>
+<li>Contactes.xls</li>
+</ul>
+<p class="image-container"><img alt="ficheros-encriptados" src="img\\9309567d3e94bb6b.png"></p>
+<p>Hemos podido obtener a quién pertenecía cada archivo, en este caso, el fichero <strong>&#34;pedofilia.zip&#34;</strong> pertenece al usuario <strong>&#34;Ian&#34;</strong>:</p>
+<p class="image-container"><img alt="pedofilia" src="img\\8bf70f395ff298fa.png"></p>
+<p>y el fichero <strong>&#34;Contactes.xls&#34;</strong> que pertenece a <strong>&#34;John&#34;</strong>:</p>
+<p class="image-container"><img alt="contactos" src="img\\4e8a247de1d6cf7f.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Navegación en Internet" duration="0">
+        <p>Para encontrar esta información basta con navegar por <strong>Autopsy</strong>, yendo a &#34;Web Search&#34;, &#34;Web History&#34;, &#34;Web Bookmarks&#34;</p>
+<h2 is-upgraded><a href="https://github.com/AlvaroCaroFdez/A2.2-DrugTrafficking/blob/main/img/pruebas/navegacion_web/Historial.csv" target="_blank">Enlace a historial</a></h2>
+<h2 is-upgraded><a href="https://github.com/AlvaroCaroFdez/A2.2-DrugTrafficking/blob/main/img/pruebas/navegacion_web/Busquedas.csv" target="_blank">Enlace a búsquedas</a></h2>
+<h2 is-upgraded><a href="https://github.com/AlvaroCaroFdez/A2.2-DrugTrafficking/blob/main/img/pruebas/navegacion_web/Marcadores.csv" target="_blank">Enlace a marcadores</a></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

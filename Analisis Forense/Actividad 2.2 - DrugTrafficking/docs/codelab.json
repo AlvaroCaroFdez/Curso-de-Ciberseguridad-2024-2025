@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-28T21:12:10+01:00",
+  "id": "docs",
+  "duration": 0,
+  "title": "A2.2-DrugTrafficking",
+  "summary": "Actividad Drug Trafficking parte 1",
+  "source": "codelab.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "docs"
+}
